@@ -57,7 +57,8 @@ def showgraph(graph): # use for showing graph of the dataset
     position = nx.kamada_kawai_layout(GR)
     nx.draw(GR,position, font_size=10, node_color='lime', node_size=100, with_labels=True)
     nx.draw_networkx_edge_labels(GR, position, font_size=10, font_color='blue',edge_labels=gr_label,rotate=0)
-
+    total_weight = "Total weight: " + str(graph.getWeight())
+    plt.legend([total_weight], loc=4, prop={'size':16})
     plt.show()
 
 def prims(graph):
@@ -88,9 +89,9 @@ def prims(graph):
         lewat.append(curr_node) # Marks the current node as visited
     return result_gr
 
-
 def kruskal(graph):
     nodes = graph.getNodes()
+    min_distance = 0;
     edges = graph.getEdges()
     result_gr = Graph()
     pairs = PStack()
